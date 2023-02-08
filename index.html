@@ -9,11 +9,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Roboto:ital,wght@1,100&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Lato:ital,wght@1,300&family=Roboto:ital,wght@1,100&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <!-- Поправить на container -->
+    <header class="header">
+      <div class="header__content">
+        <a href="index.html" class="header_logo">Movie Site</a>
+        <form>
+          <input type="text" class="header__search" placeholder="Поиск" />
+        </form>
+      </div>
+    </header>
+    <div class="container">
+      <div class="movies">
+        <div class="movie">
+          <div class="movie__cover-inner">
+            <img
+              src="https://static.displate.com/280x392/displate/2021-09-06/a1a813eb8b85a0e0991692ef680dac65_72fae74774c652143d98a6c8cf238ce4.jpg"
+              class="movie__cover"
+            />
+
+            <div class="movie__cover--darker"></div>
+          </div>
+
+          <div class="movie-info">
+            <div class="movie-title">Django</div>
+            <div class="movie__category">spaghetti western</div>
+            <!-- попробовать потом исправить на movie__average green -->
+            <div class="movie__average movie__average--green">8.5</div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="./js/script.js"></script>
   </body>
 </html>
