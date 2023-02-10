@@ -1,6 +1,7 @@
-const API_KEY = '05b70378-7e07-4f73-8ee4-a9b0676d6a4a'
+const API_KEY = '8c8e1a50-6322-4135-8875-5d40a5420d86'
 const API_KEY_POPULAR = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1'
 const API_SEARCH_URL = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword='
+const API_MOVIE_DETAILS = "https://kinopoiskapiunofficial.tech/api/v2.2/films/"
 
 const form = document.querySelector('form')
 const search = document.querySelector('.header__search')
@@ -10,7 +11,7 @@ getMovies(API_KEY_POPULAR)
 async function getMovies(url){
     const resp = await fetch(url, {
         headers:{
-            "Content-type": "application/json",
+            "Content-Type": "application/json",
             "X-API-KEY": API_KEY
         },
 
@@ -54,13 +55,12 @@ function showMovies(data){
         />
         <div class="movie__cover--darker"></div>
       </div>
-      <div class="movie-info">
-        <div class="movie-title">${movie.nameRu}</div>
-        <div class="movie__category">${movie.genres.map(genre => `${genre.genre}`
-        )}</div>
-        <div class="movie__average movie__average--${movieRatingCount(movie.rating)}">${movie.rating}</div>
+      <div class="movie__info">
+        <div class="movie__title">${movie.nameRu}</div>
+        ${movie.rating.includes('%') ?  '' : ` <div class="movie__average movie__average--${movieRatingCount(movie.rating)}">${movie.rating}</div>`}
       </div>
         `
+        movieEl.addEventListener('click', () => openModal(movie.filmId))
         moviesEl.appendChild(movieEl)
     });
 }
@@ -72,7 +72,62 @@ form.addEventListener('submit', (e) => {
   const apiSearchUrl = `${API_SEARCH_URL}${search.value}`
   if(search.value){
     getMovies(apiSearchUrl)
-  }
-
   search.value = ''
+}
+  
+})
+
+
+
+const modalEl = document.querySelector('.modal')
+
+
+async function openModal(id) {
+  const resp = await fetch(API_MOVIE_DETAILS + id, {
+    headers:{
+        "Content-Type": "application/json",
+        "X-API-KEY": API_KEY
+    },
+
+})
+const respData = await resp.json()
+
+  modalEl.classList.add('modal--show')
+  document.body.classList.add('stop-scrolling')
+
+modalEl.innerHTML = `
+  <div class="modal__card">
+  <div class="modal__button-close">X</div>
+    <img class="modal__movie-backdrop" src="${respData.posterUrl}" alt="">
+    <h2>
+      <span class="modal__movie-title"> ${respData.nameRu}</span>
+      <span class="modal__movie-release-year">(${respData.year})</span>
+    </h2>
+    <ul class="modal__movie-info">
+      <li class="modal__movie-category">Жанр: ${respData.genres.map(genre => ` ${genre.genre}`)}</li>
+      ${respData.filmLength ? `<li class="modal__movie-runtime">Продолжительность - ${respData.filmLength} минут</li>` : ''}
+      <li>Сайт: <a class="modal__movie-site" href="${respData.webUrl}">${respData.webUrl}</a></li>
+      <li class="modal__movie-overview"> Описание: ${respData.description}</li>
+    </ul>
+  </div>
+`
+const btnClose = document.querySelector('.modal__button-close')
+btnClose.addEventListener('click', () => closeModal())
+}
+
+function closeModal(){
+  modalEl.classList.remove('modal--show')
+  document.body.classList.remove('stop-scrolling')
+}
+
+window.addEventListener('click', (e) =>{
+  if(e.target === modalEl){
+    closeModal()
+  }
+}) 
+
+window.addEventListener('keydown', (e) => {
+  if(e.keyCode === 27){
+    closeModal()
+  }
 })

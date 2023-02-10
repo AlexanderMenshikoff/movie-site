@@ -5,8 +5,8 @@
 }
 
 body {
-  background-color: #faf7d5;
-  font-family: "Lato";
+  background-color: rgb(253, 233, 203);
+  font-family: "Neucha", cursive;
 }
 
 .container {
@@ -25,7 +25,7 @@ body {
 .header__logo {
   font-size: 32px;
   text-decoration: none;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .header__search {
@@ -55,6 +55,7 @@ body {
 .movie__cover {
   max-width: 100%;
   height: 100%;
+  border-radius: 7px;
 }
 
 .movie__cover--darker {
@@ -67,11 +68,13 @@ body {
   max-width: 100%;
   height: 100%;
   z-index: 1;
+  border-radius: 7px;
 }
 
 .movie__cover--darker:hover {
   background-color: rgb(255, 13, 235);
   cursor: pointer;
+  border-radius: 7px;
 }
 
 .movie__info {
@@ -79,8 +82,9 @@ body {
 }
 
 .movie__title {
-  font-size: 16px;
-  color: white;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
 }
 
 .movie__category {
@@ -118,4 +122,66 @@ body {
 
 .movie__average--vio {
   border: 1px solid rgb(255, 0, 242);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: width 2s;
+}
+
+.modal--show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__card {
+  max-width: 600px;
+  padding: 16px;
+  background-color: rgb(253, 233, 203);
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  border-radius: 7px;
+}
+
+.modal__movie-backdrop {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 7px;
+}
+
+.modal__movie-info {
+  margin-left: 20px;
+}
+
+.modal__button-close {
+  padding: 5px;
+  margin: 10px;
+  display: flex;
+  justify-content: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.modal__movie-site {
+  color: rgb(0, 0, 0);
+}
+
+ul li {
+  padding: 5px;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
