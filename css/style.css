@@ -28,11 +28,20 @@ body {
   color: rgb(0, 0, 0);
 }
 
-.header__search {
+.header__search.hidden {
   padding: 8px;
-  border: 2px solid black;
-  border-radius: 5px;
+  border: none;
+  border-radius: 15px;
   outline: none;
+  display: inline;
+}
+
+.header__search {
+  display: none;
+}
+
+.fa-solid.fa-magnifying-glass {
+  cursor: pointer;
 }
 
 .movies {
@@ -95,33 +104,45 @@ body {
 .movie__average {
   position: absolute;
   top: 10px;
-  left: 10px;
-  right: 0;
+  right: 10px;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: black;
   color: white;
   font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.movie__number {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 251, 0);
+  color: white;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .movie__average--green {
-  border: 1px solid rgb(0, 255, 0);
+  border: 2px solid rgb(0, 255, 0);
 }
 
 .movie__average--orange {
-  border: 1px solid rgb(255, 123, 0);
+  border: 2px solid rgb(255, 123, 0);
 }
 
 .movie__average--red {
-  border: 1px solid rgb(255, 0, 0);
-}
-
-.movie__average--vio {
-  border: 1px solid rgb(255, 0, 242);
+  border: 2px solid rgb(255, 0, 0);
 }
 
 .modal {
