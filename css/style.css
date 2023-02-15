@@ -44,6 +44,12 @@ body {
   cursor: pointer;
 }
 
+.header__top250,
+.header__popular-movies,
+.header__await-movies {
+  cursor: pointer;
+}
+
 .movies {
   display: flex;
   flex-wrap: wrap;
@@ -62,7 +68,7 @@ body {
 }
 
 .movie__cover {
-  max-width: 100%;
+  width: 100%;
   height: 100%;
   border-radius: 7px;
 }
@@ -115,9 +121,10 @@ body {
   color: white;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
+  z-index: 1;
 }
 
-.movie__number {
+/* .movie__number {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -131,7 +138,7 @@ body {
   color: white;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
 
 .movie__average--green {
   border: 2px solid rgb(0, 255, 0);
@@ -154,7 +161,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   transition: width 2s;
 }
 
@@ -188,10 +195,12 @@ body {
 .modal__button-close {
   padding: 5px;
   margin: 10px;
-  display: flex;
-  justify-content: right;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 30px;
+  right: 30px;
+  top: 10px;
+  position: absolute;
+  color: aliceblue;
 }
 
 .modal__movie-site {
@@ -205,4 +214,89 @@ ul li {
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
+}
+
+.modal__staff {
+  cursor: pointer;
+}
+
+.modal__staff:hover {
+  background-color: rgb(136, 241, 184);
+}
+
+.black-cover__stuff {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  height: 100%;
+  border-radius: 7px;
+}
+
+.staff__profession {
+  top: 50px;
+  position: relative;
+  color: aliceblue;
+  font-size: x-large;
+  text-align: center;
+}
+
+.staff__description {
+  top: 50px;
+  position: relative;
+  color: aliceblue;
+  font-size: 16px;
+  margin: 10px;
+  text-align: center;
+}
+
+.poster__info {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background-color: aliceblue;
+  width: 150px;
+  height: 150px;
+  top: 70px;
+  margin: auto;
+  cursor: pointer;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.poster__info:hover {
+  color: rgb(0, 0, 0);
+  background-color: #fffb00;
+  transition: all 0.5s ease-in-out;
+}
+
+.person__cover--darker {
+  background-color: black;
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 7px;
+}
+
+.person__cover--darker:hover {
+  background-color: rgb(255, 10, 235);
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 7px;
+  cursor: pointer;
 }
