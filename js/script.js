@@ -6,6 +6,7 @@ const API_ACTORS = `https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=`
 const API_TOP250_URL = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1'
 const API_AWAIT_FILMS = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_AWAIT_FILMS&page=1'
 const API_ACTORS_MORE_INFO = 'https://kinopoiskapiunofficial.tech/api/v1/staff/'
+const API_SEARCH_STUFF = 'https://kinopoiskapiunofficial.tech/api/v1/persons?name='
 
 const form = document.querySelector('form')
 const search = document.querySelector('.header__search')
@@ -76,12 +77,16 @@ form.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const apiSearchUrl = `${API_SEARCH_URL}${search.value}`
+  const apiSearchUrlStaff = `${API_SEARCH_STUFF}${search.value}`
   if(search.value){
     getMovies(apiSearchUrl)
+    getStaffIcons(apiSearchUrlStaff)
   search.value = ''
 }
   
 })
+
+
 
 // Modal window
 
@@ -288,3 +293,37 @@ function showStaffMovies(data){
       moviesEl.appendChild(movieEl)
   });
 }
+
+
+
+async function getStaffIcons(url){
+  const resp = await fetch(url, {
+      headers:{
+          "Content-Type": "application/json",
+          "X-API-KEY": API_KEY
+      },
+
+  })
+  const respData = await resp.json()
+  showStaffIcons(respData)
+}
+
+function showStaffIcons(data){
+  const moviesEl = document.querySelector('.movies')
+  data.items.forEach(person => {
+    const movieEl = document.createElement('div')
+    movieEl.classList.add('movie')
+    movieEl.innerHTML = `
+    <div class="movie__cover-inner">
+    ${person.posterUrl  ? `<img src="${person.posterUrl}" class="movie__cover" alt = "${person.nameRu}" />` : '<div class = "black-cover__stuff"></div>'}
+
+  </div>
+  <div class="movie__info">
+    ${person.nameRu ? `<div class="movie__title">${person.nameRu}</div>`  : '<div class="movie__title">Нет названия</div>' }
+  </div>
+    `
+    movieEl.addEventListener('click', () => openModalStaff(person.kinopoiskId))
+    moviesEl.appendChild(movieEl)
+});
+}
+
