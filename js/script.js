@@ -82,8 +82,8 @@ form.addEventListener('submit', (e) => {
     getMovies(apiSearchUrl)
     getStaffIcons(apiSearchUrlStaff)
   search.value = ''
+  search.classList.toggle('hidden')
 }
-  
 })
 
 
@@ -128,6 +128,7 @@ const cast = document.querySelector('.modal__staff')
 btnClose.addEventListener('click', () => closeModal())
 cast.addEventListener('click', () => closeModal())
 cast.addEventListener('click', () => getCast(respData.kinopoiskId))
+cast.addEventListener('click', () => window.scrollTo(0,0))
 }
 
 function closeModal(){
@@ -152,7 +153,6 @@ window.addEventListener('keydown', (e) => {
 searchIcon.addEventListener('click', ()=>{
   search.classList.toggle('hidden')
 })
-
 
 async function getCast(id){
   const actorsResp = await fetch(API_ACTORS + id, {
@@ -243,6 +243,7 @@ const staffMovies = document.querySelector('.modal__staff')
 btnClose.addEventListener('click', () => closeModal())
 staffMovies.addEventListener('click', () => getStaffMovies(API_ACTORS_MORE_INFO + id))
 staffMovies.addEventListener('click', () => closeModal())
+staffMovies.addEventListener('click', () => window.scrollTo(0,0))
 }
 
 
@@ -315,15 +316,14 @@ function showStaffIcons(data){
     movieEl.classList.add('movie')
     movieEl.innerHTML = `
     <div class="movie__cover-inner">
-    ${person.posterUrl  ? `<img src="${person.posterUrl}" class="movie__cover" alt = "${person.nameRu}" />` : '<div class = "black-cover__stuff"></div>'}
-
-  </div>
-  <div class="movie__info">
-    ${person.nameRu ? `<div class="movie__title">${person.nameRu}</div>`  : '<div class="movie__title">Нет названия</div>' }
-  </div>
+      <img src="${person.posterUrl}" class="movie__cover" alt = "${person.nameRu}" />
+      <div class="person__cover--darker"></div>
+    </div>
+      <div class="movie__info">
+        <div class="movie__title">${person.nameRu}</div>
+      </div>
     `
     movieEl.addEventListener('click', () => openModalStaff(person.kinopoiskId))
     moviesEl.appendChild(movieEl)
 });
 }
-
