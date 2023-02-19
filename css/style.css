@@ -9,6 +9,11 @@ body {
   font-family: "Neucha", cursive;
 }
 
+h2 {
+  text-align: center;
+  color: black;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -81,12 +86,16 @@ body {
   position: relative;
 }
 
-.movie__cover-inner {
+.movie__cover-inner,
+.person__cover-inner,
+.staff__cover-inner {
   position: relative;
   height: 360px;
 }
 
-.movie__cover {
+.movie__cover,
+.person__cover,
+.staff__cover {
   width: 100%;
   height: 100%;
   border-radius: 7px;
@@ -111,11 +120,15 @@ body {
   border-radius: 7px;
 }
 
-.movie__info {
+.movie__info,
+.person__info,
+.staff__info {
   padding: 10px 0px;
 }
 
-.movie__title {
+.movie__title,
+.person__name,
+.staff__name {
   font-size: 20px;
   color: rgb(0, 0, 0);
   font-weight: 600;
@@ -144,22 +157,6 @@ body {
   z-index: 1;
 }
 
-/* .movie__number {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(255, 251, 0);
-  color: white;
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
 .movie__average--green {
   border: 2px solid rgb(0, 255, 0);
 }
@@ -170,6 +167,11 @@ body {
 
 .movie__average--red {
   border: 2px solid rgb(255, 0, 0);
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 
 .modal {
@@ -191,7 +193,8 @@ body {
   align-items: center;
 }
 
-.modal__card {
+.modal__card,
+.modal__card-staff {
   max-width: 600px;
   padding: 16px;
   background: linear-gradient(45deg, #808ac8, #ff819d, #eac23a);
@@ -201,23 +204,21 @@ body {
   border-radius: 7px;
 }
 
-.modal__movie-backdrop {
+.modal__movie-backdrop,
+.modal__staff-backdrop {
   width: 60%;
   margin: 0 auto;
   margin-bottom: 20px;
   border-radius: 7px;
 }
 
-.modal__movie-info {
+.modal__movie-info,
+.modal__staff-info {
   margin-left: 20px;
 }
 
-h2 {
-  text-align: center;
-  color: black;
-}
-
-.modal__movie-site {
+.modal__movie-site,
+.modal__staff-link {
   text-decoration: none;
   color: #d9ff00;
 }
@@ -235,22 +236,19 @@ h2 {
 
 ul li {
   padding: 5px;
+  list-style-type: none;
 }
 
-.stop-scrolling {
-  height: 100%;
-  overflow: hidden;
-}
-
+.modal__staff-filmography,
 .modal__staff {
   cursor: pointer;
 }
 
+.modal__staff-filmography:hover,
 .modal__staff:hover {
   background-color: rgb(0, 0, 0);
+  color: white;
   border-radius: 7px;
-  height: 50px;
-  width: 50px;
 }
 
 .black-cover__stuff {
@@ -303,7 +301,8 @@ ul li {
   transition: all 0.5s ease-in-out;
 }
 
-.person__cover--darker {
+.person__cover--darker,
+.staff__cover--darker {
   background-color: black;
   opacity: 0.1;
   position: absolute;
@@ -317,7 +316,7 @@ ul li {
 }
 
 .person__cover--darker:hover {
-  background-color: rgb(255, 10, 235);
+  background-color: rgb(255, 255, 255);
   opacity: 0.1;
   position: absolute;
   top: 0;
