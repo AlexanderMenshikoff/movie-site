@@ -1,10 +1,10 @@
 const API_KEY = '8c8e1a50-6322-4135-8875-5d40a5420d86'
-const API_KEY_POPULAR = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1'
+const API_KEY_POPULAR = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1`
 const API_SEARCH_URL = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword='
 const API_MOVIE_DETAILS = "https://kinopoiskapiunofficial.tech/api/v2.2/films/"
 const API_ACTORS = `https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=`
-const API_TOP250_URL = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1'
-const API_AWAIT_FILMS = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_AWAIT_FILMS&page=1'
+const API_TOP250_URL = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1`
+const API_AWAIT_FILMS = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_AWAIT_FILMS&page=1`
 const API_ACTORS_MORE_INFO = 'https://kinopoiskapiunofficial.tech/api/v1/staff/'
 const API_SEARCH_STUFF = 'https://kinopoiskapiunofficial.tech/api/v1/persons?name='
 
@@ -105,7 +105,7 @@ function showMovies(data){
       </div>
         `
         movieEl.addEventListener('click', () => openModal(movie.filmId))
-        moviesEl.appendChild(movieEl)
+        moviesEl.appendChild(movieEl)           
     });
   }
 
@@ -316,4 +316,3 @@ function showStaffIcons(data){
     moviesEl.appendChild(movieEl)
 });
 }
-
